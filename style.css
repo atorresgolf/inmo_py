@@ -33,19 +33,32 @@ main{
     flex-direction: column;
     flex-wrap: nowrap;
 }
-.containerBuscar{
-    display: flex;
-    justify-content: right;
-    margin: 50px;
+.seccion_buscar{
+    background-color: aqua;
 }
 .palabraBuscar{
     margin-left: 17px;
 }
-.containerPrin{
+section{
+    margin: 30px;
+}
+.seccion_cards{
+   height: 90%;
+    background-color: bisque;
+}
+.container_cards{
     display: flex;
     flex-direction: row;
-    gap: 5px;
-}
-.conocer{
+    gap: 15px;
+    justify-content: center;
+    margin: 15px;
     flex-wrap: wrap;
+}
+
+.seccion_conocer{
+    flex-wrap: wrap;
+    background-color: #de7b7d;
+}
+.seccion_form{
+    background-color: blueviolet;
 }
