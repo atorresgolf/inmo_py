@@ -38,8 +38,8 @@ main{
     justify-content: right;
     margin: 50px;
 }
-.palabraBuscar{
-    margin-left: 17px;
+.seccion_buscar{
+    background-color: chocolate;
 }
 .containerPrin{
     display: flex;
