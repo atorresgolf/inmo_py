@@ -2,7 +2,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-size: 25px;
+    font-size: 1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 h1{
@@ -10,34 +10,45 @@ h1{
     flex-direction: row;
     justify-content: center;
 }
-nav{
+/* nav{
     background-color: #3a32cf;
     display: flex;
-    flex-direction: row;
     gap: 10px;
     text-align: center;
     justify-content: space-around;
-    width: 100%;
-    margin: 30px;
-}
+     
+} */
+
 li{
     list-style: none;
-    
+    color: black;
 }
 li:hover{
-    background-color: #cf3235;
-    color: aliceblue;
+    background-color: #3259cf;
+    color: #fff;
 }
 main{
     display:flex;
     flex-direction: column;
     flex-wrap: nowrap;
 }
+
 .seccion_buscar{
-    background-color: aqua;
+    background-image: url("/assets/img/casa_en_mano.png");
+    /* height: 50vh; */
+   background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
-.seccion_buscar{
-    background-color: chocolate;
+/* .titulo_inmo{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+} */
+.titulo_inmo{
+    color: #fff;
+   margin: 25%;
+   
 }
 section{
     margin: 30px;
@@ -55,10 +66,6 @@ section{
     flex-wrap: wrap;
 }
 
-.seccion_conocer{
-    flex-wrap: wrap;
-    background-color: #de7b7d;
-}
-.seccion_form{
-    background-color: blueviolet;
-}
+
+
+
