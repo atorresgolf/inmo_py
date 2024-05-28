@@ -1,3 +1,4 @@
+@import url('https://fonts.cdnfonts.com/css/jenriv');
 *{
     padding: 0;
     margin: 0;
@@ -5,10 +6,13 @@
     font-size: 1rem;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
+
+/* index.html --> HEADER*/
 h1{
     display: flex;
-    flex-direction: row;
+    /* flex-direction: row; */
     justify-content: center;
+    
 }
 /* nav{
     background-color: #3a32cf;
@@ -22,11 +26,20 @@ h1{
 li{
     list-style: none;
     color: black;
+    font-family: "Roboto", sans-serif;
+    font-weight: 400;
+    font-style: italic;
 }
 li:hover{
-    background-color: #3259cf;
+    background-color: #6dd5f5;
     color: #fff;
+    border-radius: 15px;
 }
+a:focus{
+    background-color: #42c6ef;
+}
+
+/* index.html ---> MAIN */
 main{
     display:flex;
     flex-direction: column;
@@ -34,11 +47,12 @@ main{
 }
 
 .seccion_buscar{
-    background-image: url("/assets/img/casa_en_mano.png");
+    background-image: url("../img/casa_en_mano.png");
     /* height: 50vh; */
-   background-position: center;
+   background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
+    
 }
 /* .titulo_inmo{
     display: flex;
@@ -55,7 +69,8 @@ section{
 }
 .seccion_cards{
    height: 90%;
-    background-color: bisque;
+    /* background-color: bisque; */
+    
 }
 .container_cards{
     display: flex;
@@ -64,8 +79,45 @@ section{
     justify-content: center;
     margin: 15px;
     flex-wrap: wrap;
+    
 }
 
+.card{
+    /* box-shadow: 2px -6px rgba(81, 79, 79, 0.221); */
+   box-shadow:  inset 0 -3em 3em rgb(0 200 0 / 30%),
+    0 0 0 2px white,
+    0.3em 0.3em 1em rgba(89, 176, 197, 0.6);
+}
 
+/* index.html ---> FOOTER */
+.footer{
+    font-family: "Roboto", sans-serif;
+    font-weight:600;
+    font-style: italic;
+    background-color: grey;
+    
+}
 
+/* Contacto.html ---> MAIN */
 
+.titulo_contacto{
+    font-weight: 600;
+    font-size: 2rem;
+    text-align: center;
+    font-family: 'Jenriv', sans-serif;
+
+}
+
+.formulario_contacto{
+    display: flex;
+    flex-direction: column; 
+    /* align-items: center;  */
+    background-color: #c6e6f0; 
+    border-radius: 15px;                                  
+}
+
+label{
+    font-family: 'Jenriv', sans-serif;
+    font-weight: 600;
+    font-size: 1.2rem;
+}
