@@ -101,8 +101,98 @@
         </nav>
     </header>
     <main>
+<section class="filtros_propiedades">
+    <form class="row g-3">
+        <div class="col-auto">
+            <input type="text" readonly class="form-control-plaintext" id="propiedades"  placeholder="Dónde queres mudarte?">
+        </div>
+        <!-- <div class="col-auto">
+            
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
+                <label class="form-check-label" for="flexCheckDefault">
+                  Default checkbox
+                </label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked>
+                <label class="form-check-label" for="flexCheckChecked">
+                  Checked checkbox
+                </label>
+              </div>
+        </div> -->
+        <div class="col-auto">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Selecciona opciones
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox1">
+                    <label class="form-check-label" for="checkbox1">
+                      Opción 1
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox2">
+                    <label class="form-check-label" for="checkbox2">
+                      Opción 2
+                    </label>
+                  </div>
+                </li>
+                <li>
+                  <div class="form-check">
+                    <input class="form-check-input" type="checkbox" value="" id="checkbox3">
+                    <label class="form-check-label" for="checkbox3">
+                      Opción 3
+                    </label>
+                  </div>
+                </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-auto">
+            
+          </div>
+          <div class="col-auto">
+            <select class="form-select" id="selectOptions">
+              <option selected>Elige una opción</option>
+              <option value="1">Opción 1</option>
+              <option value="2">Opción 2</option>
+              <option value="3">Opción 3</option>
+            </select>
+          </div>
+        </div>
+        <div class="col-auto">
+            <div class="dropdown">
+              <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Selecciona rango de precios
+              </button>
+              <div class="dropdown-menu p-3" aria-labelledby="dropdownMenuButton">
+                <div class="mb-3">
+                  <label for="priceMin" class="form-label">Precio mínimo:</label>
+                  <input type="number" class="form-control" id="priceMin" placeholder="Min">
+                </div>
+                <div class="mb-3">
+                  <label for="priceMax" class="form-label">Precio máximo:</label>
+                  <input type="number" class="form-control" id="priceMax" placeholder="Max">
+                </div>
+                <button type="button" class="btn btn-primary w-100">Aplicar</button>
+              </div>
+            </div>
+            </div>
+          
 
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary mb-3">Filtrar</button>
+        </div>
+      </form>
+</section>
         <section class="seccion_cards">
+            <h2 class="titulo_propiedad">Propiedades</h2>
             <div class="container_cards">
                 <div class="card mb-3" style="max-width: 540px;">
                     <div class="row g-0">
