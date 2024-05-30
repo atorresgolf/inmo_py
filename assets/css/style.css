@@ -53,6 +53,9 @@ main{
     background-size: cover;
     background-repeat: no-repeat;
     
+    justify-content: center;
+
+    
 }
 /* .titulo_inmo{
     display: flex;
@@ -122,6 +125,31 @@ label{
     font-size: 1.2rem;
 }
 /* Propiedades */
+
 .titulo_propiedad{
     text-align: center;
+    
 }
+
+.filtros_propiedades{
+    display: flex;
+    justify-content: center;
+}
+
+.boton_ingresar{
+    
+    margin-right: 10%;
+}
+
+
+
+/* 
+@media (max-width: 768px) { 
+    .contenedor_footer{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+       
+    }
+ } */
