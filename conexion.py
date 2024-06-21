@@ -16,6 +16,6 @@ def create_connection(host_name, user_name, user_password, port, db_name):
     except Error as e:
         print(f"Error al conectar a MySQL: {e}")
         
-create_connection("localhost", "root", "","3307", "curso")
+create_connection("localhost", "root", "","3306", "inmobiliaria")
 
 
