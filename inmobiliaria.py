@@ -1,12 +1,11 @@
 import mysql.connector
 
 class Inmobiliaria:
-    def __init__(self, host, user, password, port, database):
+    def __init__(self, host, user, password, database):
         self.conn = mysql.connector.connect(
             host=host,
             user=user,
             password=password,
-            port=port,
             database=database
         )
         
@@ -41,6 +40,12 @@ class Inmobiliaria:
                     valor DECIMAL(10,2)
                 )'''
             ),
+            'operaciones': (
+                ''' CREATE TABLE IF NOT EXISTS operaciones (
+                    codigo_operacion INT AUTO_INCREMENT PRIMARY KEY,
+                    descripcion VARCHAR(255)
+                )'''
+            ),
             'inmuebles': (
                 ''' CREATE TABLE IF NOT EXISTS inmuebles (
                     id_inmueble INT AUTO_INCREMENT PRIMARY KEY,
@@ -68,10 +73,19 @@ class Inmobiliaria:
                     email VARCHAR(100) NOT NULL
                 )'''
             ),
-            'operaciones': (
-                ''' CREATE TABLE IF NOT EXISTS operaciones (
-                    codigo_operacion INT AUTO_INCREMENT PRIMARY KEY,
-                    descripcion VARCHAR(255)
+            'imagenes': (
+                ''' CREATE TABLE IF NOT EXISTS imagenes (
+                    id_imagen INT AUTO_INCREMENT PRIMARY KEY,
+                    imagen_url VARCHAR(255)
+                )'''
+            ),
+            'inmuebles_imagenes': (
+                ''' CREATE TABLE IF NOT EXISTS inmuebles_imagenes (
+                    id_inmu_imag INT AUTO_INCREMENT PRIMARY KEY, 
+                    id_imagen INT,
+                    id_inmueble INT,
+                    FOREIGN KEY (id_imagen) REFERENCES imagenes(id_imagen), 
+                    FOREIGN KEY (id_inmueble) REFERENCES inmuebles(id_inmueble)
                 )'''
             )
         }
@@ -95,6 +109,20 @@ class Inmobiliaria:
     def agregar_estado(self, descripcion):
         sql = "INSERT INTO estados (descripcion) VALUES (%s)"
         valores = (descripcion,)
+        self.conector.execute(sql, valores)
+        self.conn.commit()
+        return self.conector.lastrowid
+    
+    # CRUD estado_inmuebles
+    def agregar_estado_inmueble(self, codigo_estado):
+    # Verificar si el estado existe
+        self.conector.execute('SELECT COUNT(*) AS count FROM estados WHERE codigo_estado = %s', (codigo_estado,))
+        if self.conector.fetchone()['count'] == 0:
+            raise ValueError(f"El estado con codigo {codigo_estado} no existe.")
+    
+    # Insertar el registro en estado_inmuebles
+        sql = 'INSERT INTO estado_inmuebles (codigo_estado) VALUES (%s)'
+        valores = (codigo_estado,)
         self.conector.execute(sql, valores)
         self.conn.commit()
         return self.conector.lastrowid
@@ -131,12 +159,44 @@ class Inmobiliaria:
         self.conn.commit()
         return self.conector.lastrowid
 
+    # CRUD DE IMAGENES
+    def agregar_imagen(self, imagen_url):
+        sql = 'INSERT INTO imagenes (imagen_url) VALUES (%s)'
+        valores = (imagen_url,)  # Coma al final para definir una tupla de un solo elemento
+        self.conector.execute(sql, valores)
+        self.conn.commit()
+        return self.conector.lastrowid
+
+    # CRUD DE INMUEBLES_IMAGENES
+    def agregar_inmueble_imagen(self, id_imagen, id_inmueble):
+        # Verificar si la imagen existe
+        self.conector.execute('SELECT COUNT(*) AS count FROM imagenes WHERE id_imagen = %s', (id_imagen,))
+        if self.conector.fetchone()['count'] == 0:
+            raise ValueError(f"La imagen con id {id_imagen} no existe.")
+        
+        # Verificar si el inmueble existe
+        self.conector.execute('SELECT COUNT(*) AS count FROM inmuebles WHERE id_inmueble = %s', (id_inmueble,))
+        if self.conector.fetchone()['count'] == 0:
+            raise ValueError(f"El inmueble con id {id_inmueble} no existe.")
+        
+        # Insertar el registro en inmuebles_imagenes
+        sql = 'INSERT INTO inmuebles_imagenes (id_imagen, id_inmueble) VALUES (%s, %s)'
+        valores = (id_imagen, id_inmueble,)
+        self.conector.execute(sql, valores)
+        self.conn.commit()
+        return self.conector.lastrowid
+
 # Inicialización de la clase y ejecución de métodos CRUD
-inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', port=3307, database='inmobiliaria')
+inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', database='inmobiliaria')
 
 # Agregar datos
-inmobiliaria.agregar_precio('Dolares', 50)
-inmobiliaria.agregar_tipo_inmueble('Casa')
-inmobiliaria.agregar_estado('Activa')
-inmobiliaria.agregar_operacion('Venta')
-inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, 'anto@gmail.com', '1234')
+# inmobiliaria.agregar_precio('Pesos', 50)
+# inmobiliaria.agregar_tipo_inmueble('Departamento')
+# inmobiliaria.agregar_estado('Baja')
+# inmobiliaria.agregar_operacion('Alquiler')
+# inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, '1234', 'anto@gmail.com')
+
+# inmobiliaria.agregar_estado_inmueble(2)
+# inmobiliaria.agregar_inmueble('Verdadera 456', 'otra Shelbyville', 'Provincia Real', 1, 1, 1, 1, 'Hermosa casa en venta ')
+# inmobiliaria.agregar_imagen('casa2.jpg')
+inmobiliaria.agregar_inmueble_imagen(2, 2)  # Asegúrate de que estos IDs existan en las tablas correspondientes
