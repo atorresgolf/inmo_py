@@ -1,11 +1,12 @@
 import mysql.connector
 
 class Inmobiliaria:
-    def __init__(self, host, user, password, database):
+    def __init__(self, host, user, password,port, database):
         self.conn = mysql.connector.connect(
             host=host,
             user=user,
             password=password,
+            port=port,
             database=database
         )
         
@@ -187,16 +188,16 @@ class Inmobiliaria:
         return self.conector.lastrowid
 
 # Inicialización de la clase y ejecución de métodos CRUD
-inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', database='inmobiliaria')
+inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', port=3307, database='inmobiliaria')
 
 # Agregar datos
-# inmobiliaria.agregar_precio('Pesos', 50)
-# inmobiliaria.agregar_tipo_inmueble('Departamento')
-# inmobiliaria.agregar_estado('Baja')
-# inmobiliaria.agregar_operacion('Alquiler')
-# inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, '1234', 'anto@gmail.com')
+inmobiliaria.agregar_precio('Pesos', 50)
+inmobiliaria.agregar_tipo_inmueble('Departamento')
+inmobiliaria.agregar_estado('Baja')
+inmobiliaria.agregar_operacion('Alquiler')
+inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, '1234', 'anto@gmail.com')
 
-# inmobiliaria.agregar_estado_inmueble(2)
-# inmobiliaria.agregar_inmueble('Verdadera 456', 'otra Shelbyville', 'Provincia Real', 1, 1, 1, 1, 'Hermosa casa en venta ')
-# inmobiliaria.agregar_imagen('casa2.jpg')
-inmobiliaria.agregar_inmueble_imagen(2, 2)  # Asegúrate de que estos IDs existan en las tablas correspondientes
+inmobiliaria.agregar_estado_inmueble(1)
+inmobiliaria.agregar_inmueble('Verdadera 456', 'otra Shelbyville', 'Provincia Real', 1, 1, 1, 1, 'Hermosa casa en venta ')
+inmobiliaria.agregar_imagen('casa2.jpg')
+inmobiliaria.agregar_inmueble_imagen(1, 1)  # Asegúrate de que estos IDs existan en las tablas correspondientes
