@@ -1,4 +1,6 @@
 
+##### PRIMER Inmobiliaria como diccionario #####
+#actualmente no lo usamos
 class Inmobiliaria:
     inmuebles=[]
 

@@ -1,0 +1,240 @@
+/* estilos_admin.css */
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f0f2f5;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+header {
+    width: 100%;
+    background-color: #4a90e2;
+    padding: 10px 0;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-index {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.navbar-index a {
+    color: #fff;
+    text-decoration: none;
+    padding: 14px 20px;
+    display: inline-block;
+}
+
+.navbar-index a:hover {
+    background-color: #357abd;
+}
+
+.logo-nav {
+    height: 50px;
+    margin-right: auto;
+}
+
+.content {
+    text-align: center;
+    padding: 20px;
+}
+
+h1 {
+    color: #333;
+}
+
+form {
+    width: 80%;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    color: #555;
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+form textarea {
+    height: 100px;
+}
+
+form button[type="submit"],
+form a {
+    display: inline-block;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #4a90e2;
+    color: #fff;
+    text-decoration: none;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form button[type="submit"]:hover,
+form a:hover {
+    background-color: #357abd;
+}
+
+.logo-centrado img {
+    max-width: 20%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Estilos para la tabla */
+table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+th, td {
+    padding: 12px;
+    border: 1px solid #ddd;
+    text-align: center;
+}
+
+th {
+    background-color: #4a90e2;
+    color: #fff;
+}
+
+tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+tr:hover {
+    background-color: #f1f1f1;
+}
+
+.btn-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.btn {
+    padding: 8px 16px;
+    border: none;
+    cursor: pointer;
+    color: #fff;
+    border-radius: 4px;
+    text-decoration: none;
+    margin: 0 5px;
+}
+
+.btn-alta {
+    background-color: #28a745;
+}
+
+.btn-modificar {
+    background-color: #ffc107;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+}
+
+.btn-consultar {
+    background-color: #007bff;
+}
+
+.btn-alta:hover, .btn-modificar:hover, .btn-eliminar:hover, .btn-consultar:hover {
+    opacity: 0.8;
+}
+
+
+/* estilos_admin.css */
+
+form {
+    width: 90%; /* Ancho del formulario */
+    max-width: 600px; /* Ancho máximo del formulario */
+    background-color: #fff; /* Color de fondo */
+    padding: 20px; /* Espaciado interno */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra */
+    margin-top: 20px; /* Margen superior */
+    border-radius: 8px; /* Borde redondeado */
+}
+
+form label {
+    display: block; /* Mostrar etiquetas en bloque */
+    margin-bottom: 10px; /* Espacio inferior entre etiquetas */
+    color: #555; /* Color del texto */
+}
+
+form input[type="text"],
+form input[type="number"],
+form textarea {
+    width: calc(100% - 20px); /* Ancho del campo de entrada */
+    padding: 10px; /* Relleno */
+    margin-bottom: 15px; /* Espacio inferior */
+    border: 1px solid #ccc; /* Borde */
+    border-radius: 4px; /* Borde redondeado */
+    font-size: 14px; /* Tamaño de fuente */
+    box-sizing: border-box; /* Incluir el borde en el tamaño total */
+}
+
+form textarea {
+    height: 100px; /* Altura del área de texto */
+}
+
+.btn-container {
+    display: flex; /* Mostrar en línea */
+    justify-content: center; /* Justificar al centro */
+    margin-top: 20px; /* Margen superior */
+}
+
+.btn {
+    padding: 12px 24px; /* Relleno del botón */
+    border: none; /* Sin borde */
+    cursor: pointer; /* Cursor de puntero */
+    color: #fff; /* Color del texto */
+    border-radius: 4px; /* Borde redondeado */
+    text-decoration: none; /* Sin subrayado */
+}
+
+.btn-alta {
+    background-color: #28a745; /* Color de fondo verde */
+}
+
+.btn-volver {
+    background-color: #007bff; /* Color de fondo azul */
+}
+
+.btn:hover {
+    opacity: 0.8; /* Opacidad al pasar el mouse */
+}
+/*estilos imagenes */
+.thumbnail {
+    max-width: 150px; /* Establece el ancho máximo de la miniatura */
+    max-height: 100px; /* Establece la altura máxima de la miniatura */
+    display: block; /* Asegura que la imagen se muestre como un bloque */
+    margin: auto; /* Centra la imagen horizontalmente */
+}
