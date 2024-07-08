@@ -1,12 +1,12 @@
 import mysql.connector
 
 class InmobiliariaAdmin:
-    def __init__(self, host, user, password, port, database ):
+    def __init__(self, host, user, password,  database ):
         self.conn = mysql.connector.connect(
             host=host,
             user=user,
             password=password,
-            port = port
+           
              )
         
         self.conector = self.conn.cursor()
@@ -89,7 +89,7 @@ class InmobiliariaAdmin:
     
     
 # Inicialización de la clase y ejecución de métodos CRUD
-inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', port=3307, database='inmobiliaria_admin')
+inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', database='inmobiliaria_admin')
 # inmueble = inmobiliaria.consultar_inmueble(1)
 # print (inmueble)
 
