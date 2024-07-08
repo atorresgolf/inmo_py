@@ -18,14 +18,14 @@ from inmobiliaria_admin import InmobiliariaAdmin
 app = Flask(__name__)
 CORS(app)
 
-inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', port=3307,  database='inmobiliaria_admin')
+inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='',   database='inmobiliaria_admin')
 
 
 @app.route("/", methods=["GET"])
 def index():
     inmuebles = inmobiliaria.listar_inmuebles()
     # return jsonify(inmuebles)
-    return render_template('index.html', inmuebles=inmuebles)
+    return render_template('index_inmo.html', inmuebles=inmuebles)
 
 @app.route('/propiedades')
 def propiedades():
