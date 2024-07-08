@@ -159,7 +159,29 @@ class Inmobiliaria:
         self.conector.execute(sql, valores)
         self.conn.commit()
         return self.conector.lastrowid
+    
+    def consultar_inmueble(self, id_inmueble):
+        self.conector.execute(f"SELECT * FROM inmuebles WHERE id_inmueble = {id_inmueble}")
+        return self.conector.fetchone()
+    
+    def modificar_inmueble(self, id_inmueble, mod_direccion, mod_localidad, mod_provincia, mod_codigo_precio, mod_codigo_operacion, mod_codigo_tipo_inmueble, mod_codigo_estado_inmueble, mod_descripcion):
+        sql = "UPDATE inmuebles SET direccion=%s, localidad=%s, provincia=%s, codigo_precio=%s, codigo_operacion=%s, codigo_tipo_inmueble=%s, codigo_estado_inmueble=%s, descripcion=%s WHERE id_inmueble=%s"
+        valores = (mod_direccion, mod_localidad, mod_provincia, mod_codigo_precio, mod_codigo_operacion, mod_codigo_tipo_inmueble, mod_codigo_estado_inmueble, mod_descripcion, id_inmueble)
+        self.conector.execute(sql, valores)
+        self.conn.commit()
+        return self.conector.rowcount > 0
+    
+    def listar_inmuebles(self):
+        self.conector.execute("SELECT * FROM inmuebles")
+        inmuebles = self.conector.fetchall()
+        return inmuebles
 
+    def eliminar_inmueble(self, id_inmueble):
+        self.conector.execute(f"DELETE FROM inmuebles WHERE id_inmueble = {id_inmueble}")
+        self.conn.commit()
+        return self.conector.rowcount > 0
+    
+    
     # CRUD DE IMAGENES
     def agregar_imagen(self, imagen_url):
         sql = 'INSERT INTO imagenes (imagen_url) VALUES (%s)'
@@ -189,15 +211,18 @@ class Inmobiliaria:
 
 # Inicialización de la clase y ejecución de métodos CRUD
 inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', port=3307, database='inmobiliaria')
+# inmueble = inmobiliaria.consultar_inmueble(1)
+# print (inmueble)
+
 
 # Agregar datos
-inmobiliaria.agregar_precio('Pesos', 50)
-inmobiliaria.agregar_tipo_inmueble('Departamento')
-inmobiliaria.agregar_estado('Baja')
-inmobiliaria.agregar_operacion('Alquiler')
-inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, '1234', 'anto@gmail.com')
+# inmobiliaria.agregar_precio('Pesos', 50)
+# inmobiliaria.agregar_tipo_inmueble('Departamento')
+# inmobiliaria.agregar_estado('Baja')
+# inmobiliaria.agregar_operacion('Alquiler')
+# inmobiliaria.agregar_usuario('Anto', 'Torres', 30658425, '1234', 'anto@gmail.com')
 
-inmobiliaria.agregar_estado_inmueble(1)
-inmobiliaria.agregar_inmueble('Verdadera 456', 'otra Shelbyville', 'Provincia Real', 1, 1, 1, 1, 'Hermosa casa en venta ')
-inmobiliaria.agregar_imagen('casa2.jpg')
-inmobiliaria.agregar_inmueble_imagen(1, 1)  # Asegúrate de que estos IDs existan en las tablas correspondientes
+# inmobiliaria.agregar_estado_inmueble(1)
+# inmobiliaria.agregar_inmueble('Verdadera 456', 'otra Shelbyville', 'Provincia Real', 1, 1, 1, 1, 'Hermosa casa en venta ')
+# inmobiliaria.agregar_imagen('casa2.jpg')
+# inmobiliaria.agregar_inmueble_imagen(1, 1)  # Asegúrate de que estos IDs existan en las tablas correspondientes
