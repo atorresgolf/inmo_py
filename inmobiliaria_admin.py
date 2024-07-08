@@ -1,12 +1,12 @@
 import mysql.connector
 
 class InmobiliariaAdmin:
-    def __init__(self, host, user, password, database ):
+    def __init__(self, host, user, password, port, database ):
         self.conn = mysql.connector.connect(
             host=host,
             user=user,
             password=password,
-            
+            port = port
              )
         
         self.conector = self.conn.cursor()
@@ -89,7 +89,7 @@ class InmobiliariaAdmin:
     
     
 # Inicialización de la clase y ejecución de métodos CRUD
-inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', database='inmobiliaria_admin')
+inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', port=3307, database='inmobiliaria_admin')
 # inmueble = inmobiliaria.consultar_inmueble(1)
 # print (inmueble)
 
@@ -103,8 +103,6 @@ inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='', dat
 
 # inmobiliaria.agregar_estado_inmueble(1)
 # inmobiliaria.agregar_inmueble('Verdadera 456', 'Shelbyville', 'Provincia Real', 'Pesos', 10000, 'Casa', 'Venta', 'Hermosa casa en venta ')
-# inmobiliaria.agregar_imagen('casa2.jpg')
-# inmobiliaria.agregar_inmueble_imagen(1, 1)  # Asegúrate de que estos IDs existan en las tablas correspondientes
 # inmobiliaria.agregar_inmueble('Solano 34', 'Capital', 'Cordoba', 'Pesos', 1000, 'Casa', 'Alquiler', 'Hermosa casa en alquiler ')
 # inmobiliaria.agregar_inmueble('Colon 560', 'Capital', 'Mendoza', 'Dolares', 5000, 'Casa', 'Venta', 'Hermosa casa en venta ')
 # inmobiliaria.agregar_inmueble('Laprida 636', 'Capital', 'Tucuman', 'Dolares', 3000, 'Departamento', 'Alquiler', 'Hermoso departamento en alquiler ')
