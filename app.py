@@ -19,7 +19,8 @@ app = Flask(__name__)
 CORS(app)
 
 inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='',   database='inmobiliaria_admin')
-
+# inmobiliaria = InmobiliariaAdmin(host='atorresgolf.mysql.pythonanywhere-services.com', user='atorresgolf', password='',   database='inmobiliaria_admin')
+#para pythonanywhere
 
 @app.route("/", methods=["GET"])
 def index():
@@ -123,3 +124,4 @@ def eliminar_inmueble(id_inmueble)  :
 
 if __name__ == "__main__":
     app.run(debug=True)
+    # app.run(debug=False) para pythonanywhere
