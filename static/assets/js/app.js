@@ -1,5 +1,5 @@
-// const URL = 'http://127.0.0.1:5000/'
-const URL = 'http://atorresgolf.pythonanywhere.com/'
+const URL = 'http://127.0.0.1:5000/'
+// const URL = 'http://atorresgolf.pythonanywhere.com/'
 // const tabla_inmuebles = document.getElementById('tabla_inmuebles');
 
 fetch(URL + 'inmuebles')
