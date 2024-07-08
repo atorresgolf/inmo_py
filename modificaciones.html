@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modificar Producto 🚀</title>
-    <link rel="stylesheet" href="./assets/css/estilos_admin.css">
+    <link rel="stylesheet" href="./static/assets/css/estilos_admin.css">
     
 </head>
 
 <body>
     <header>
         <nav class="navbar-index">
-            <img class="logo-nav" src="./assets/img/casa.jpg" alt="logo">
+            <img class="logo-nav" src="./static/assets/img/casa.jpg" alt="logo">
             <a href="index_admin.html">Home</a>
             <a href="altas.html">Alta de inmuebles</a>
             <a href="listado.html">Listado de inmuebles</a>
@@ -23,7 +23,7 @@
     </header>
 
     <div class="logo-centrado">
-        <img src="./assets/img/casa.jpg" alt="logo">
+        <img src="./static/assets/img/casa.jpg" alt="logo">
     </div>
     <h1>Modificar Inmuebles </h1><br>
 
@@ -49,17 +49,18 @@
                 <label for="provinciaModificar">Provincia:</label>
                 <input type="text" id="provinciaModificar" required><br>
 
-                <label for="codigo_precioModificar">Código Precio:</label>
-                <input type="number" step="1" id="codigo_precioModificar" required><br>
+                <label for="monedaModificar">Moneda:</label>
+                <input type="text" id="monedaModificar"><br>
 
-                <label for="codigo_tipo_inmuebleModificar">Código Tipo:</label>
-                <input type="number" step="1" id="codigo_tipo_inmuebleModificar" required><br>
+                <label for="precioModificar">Precio:</label>
+                <input type="number" step="1" id="precioModificar" required><br>
 
-                <label for="codigo_operacionModificar">Código operación:</label>
-                <input type="number" step="1" id="codigo_operacionModificar" required><br>
+                <label for="tipo_inmuebleModificar">Tipo:</label>
+                <input type="text" step="1" id="tipo_inmuebleModificar" required><br>
 
-                <label for="codigo_estado_inmuebleModificar">Código estado:</label>
-                <input type="number" step="1" id="codigo_estado_inmuebleModificar" required><br>
+            
+                <label for="estadoModificar">Estado:</label>
+                <input type="text" step="1" id="estadoModificar" required><br>
                 
 
                 <label for="descripcionModificar">Descripción:</label>
@@ -83,7 +84,7 @@
             </form>
         </div>
     </div>
-    <script src="./assets/js/app.js"></script>
+    <!-- <script src="./assets/js/app.js"></script> -->
 
     <script>
         const URL = "http://127.0.0.1:5000/"
@@ -96,11 +97,10 @@
         let direccion = '';
         let localidad = '';
         let provincia = '';
-        let codigo_precio = '';
-        let codigo_operacion = '';
-        let codigo_tipo_inmueble = '';
-        let codigo_estado_inmueble = '';
-        let codigo_ = '';
+        let moneda = '';
+        let precio = '';
+        let tipo_inmueble = '';
+        let estado = '';
         // let imagen_url = '';
         // let imagenSeleccionada = null;
         // let imagenUrlTemp = null;
@@ -124,13 +124,16 @@
                     }
                 })
                 .then(data => {
+                    
+                    console.log('Datos obtenidos:', data);
+
                     direccion = data.direccion;
                     localidad = data.localidad;
                     provincia = data.provincia;
-                    codigo_precio = data.codigo_precio;
-                    codigo_operacion = data.codigo_operacion;
-                    codigo_tipo_inmueble = data.codigo_tipo_inmueble;
-                    codigo_estado_inmueble = data.codigo_estado_inmueble;
+                    moneda = data.moneda;
+                    precio = data.precio;
+                    tipo_inmueble = data.tipo_inmueble;
+                    estado = data.estado;
                     
                     
                     // imagen_url = data.imagen_url;
@@ -139,7 +142,7 @@
                     mostrarFormulario();
                 })
                 .catch(error => {
-                    alert('ID no encontrado.');
+                    alert('ID no encontrado!!!!');
                 });
         }
 
@@ -149,10 +152,10 @@
                 document.getElementById('direccionModificar').value = direccion;
                 document.getElementById('localidadModificar').value = localidad;
                 document.getElementById('provinciaModificar').value = provincia;
-                document.getElementById('codigo_precioModificar').value = codigo_precio;
-                document.getElementById('codigo_operacionModificar').value = codigo_operacion;
-                document.getElementById('codigo_tipo_inmuebleModificar').value = codigo_tipo_inmueble;
-                document.getElementById('codigo_estado_inmuebleModificar').value = codigo_estado_inmueble;
+                document.getElementById('monedaModificar').value = moneda;
+                document.getElementById('precioModificar').value = precio;
+                document.getElementById('tipo_inmuebleModificar').value = tipo_inmueble;
+                document.getElementById('estadoModificar').value = estado;
                 document.getElementById('descripcionModificar').value = descripcion;
 
                 // const imagenActual = document.getElementById('imagen-actual');
@@ -194,10 +197,10 @@
             formData.append('direccion', document.getElementById('direccionModificar').value);
             formData.append('localidad', document.getElementById('localidadModificar').value);
             formData.append('provincia', document.getElementById('provinciaModificar').value);
-            formData.append('codigo_precio', document.getElementById('codigo_precioModificar').value);
-            formData.append('codigo_operacion', document.getElementById('codigo_operacionModificar').value);
-            formData.append('codigo_tipo_inmueble', document.getElementById('codigo_tipo_inmuebleModificar').value);
-            formData.append('codigo_estado_inmueble', document.getElementById('codigo_estado_inmuebleModificar').value);
+            formData.append('moneda', document.getElementById('monedaModificar').value);
+            formData.append('precio', document.getElementById('precioModificar').value);
+            formData.append('tipo_inmueble', document.getElementById('tipo_inmuebleModificar').value);
+            formData.append('estado', document.getElementById('estadoModificar').value);
             formData.append('descripcion', document.getElementById('descripcionModificar').value);
 
             // Si se ha seleccionado una imagen nueva, la añade al formData. 
@@ -213,7 +216,7 @@
                     if (response.ok) {
                         return response.json()
                     } else {
-                        throw new Error('Error al guardar los cambios del producto.')
+                        throw new Error('Error al guardar los cambios del Inmueble.')
                     }
                 })
                 .then(data => {
@@ -234,10 +237,10 @@
             document.getElementById('direccionModificar').value = '';
             document.getElementById('localidadModificar').value = '';
             document.getElementById('provinciaModificar').value = '' ;
-            document.getElementById('codigo_precioModificar').value = '';
-            document.getElementById('codigo_operacionModificar').value = '';
-            document.getElementById('codigo_tipo_inmuebleModificar').value = '';
-            document.getElementById('codigo_estado_inmuebleModificar').value = '';
+            document.getElementById('monedaModificar').value = '' ;
+            document.getElementById('precioModificar').value = '';
+            document.getElementById('tipo_inmuebleModificar').value = '';
+            document.getElementById('estadoModificar').value = '';
             document.getElementById('descripcionModificar').value = '';
 
             // const imagenActual = document.getElementById('imagen-actual');
@@ -250,15 +253,15 @@
             direccion = '';
             localidad = '';
             provincia = '';
-            codigo_precio = '';
-            codigo_operacion = '';
-            codigo_tipo_inmueble = '';
-            codigo_estado_inmueble = '';
+            moneda = '';
+            precio = '';
+            tipo_inmueble = '';
+            estado = '';
             // imagen_url = '';
             // imagenSeleccionada = null;
             // imagenUrlTemp = null;
             descripcion = '';
-            mostrarDatosProducto = false;
+            mostrarDatosInmueble = false;
 
             document.getElementById('datos-inmueble').style.display = 'none';
         }
