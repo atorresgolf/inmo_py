@@ -1,3 +1,4 @@
+### este es para ampliar el sistema con tablas y sus relaciones
 import mysql.connector
 
 class Inmobiliaria:

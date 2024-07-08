@@ -1,3 +1,5 @@
+### Usuario usando como diccionario
+# no se usa ahora
 class Usuario:
     usuarios=[]
 

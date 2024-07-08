@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agregar Inmueble 🚀</title>
+    <link rel="stylesheet" href="./assets/css/estilos_admin.css">
+    
+</head>
+
+<body>
+    <header>
+        <nav class="navbar-index">
+            <img class="logo-nav" src="./assets/img/casa.jpg" alt="logo">
+            <a href="index_admin.html">Home</a>
+            <a href="altas.html">Alta de inmuebles</a>
+            <a href="listado.html">Listado de inmuebles</a>
+            <a href="modificaciones.html">Modificar inmuebles</a>
+            <a href="listadoEliminar.html">Eliminar inmuebles</a>
+        </nav>
+    </header>
+
+    <div class="logo-centrado">
+        <img src="./assets/img/casa.jpg" alt="logo">
+    </div>
+
+    <div class="content">
+        <h1>Agregar Inmueble</h1>
+
+        <!-- enctype="multipart/form-data" es necesario para enviar archivos al back. -->
+        <form id="formulario" enctype="multipart/form-data">
+            <label for="direccion">Dirección:</label>
+            <input type="text" id="direccion" name="direccion" required><br>
+
+            <label for="localidad">Localidad:</label>
+            <input type="text" id="localidad" name="localidad" required><br>
+
+            <label for="provincia">Provincia:</label>
+            <input type="text" id="provincia" name="provincia" required><br>
+
+            <label for="codigo_precio">Precio:</label>
+            <input type="number" step="0.01" id="codigo_precio" name="codigo_precio" required><br>
+
+            <label for="codigo_operacion">Operación:</label>
+            <input type="text" id="codigo_operacion" name="codigo_operacion" required><br>
+
+            <label for="codigo_tipo_inmueble">Tipo de Inmueble:</label>
+            <input type="text" id="codigo_tipo_inmueble" name="codigo_tipo_inmueble" required><br>
+
+            <label for="codigo_estado_inmueble">Estado del Inmueble:</label>
+            <input type="text" id="codigo_estado_inmueble" name="codigo_estado_inmueble" required><br>
+
+            <label for="descripcion">Descripción:</label>
+            <textarea id="descripcion" name="descripcion" required></textarea><br>
+
+            <!-- <label for="imagenInmueble">Imagen del inmueble:</label>
+            <input type="file" id="imagenInmueble" name="imagen"><br><br> -->
+
+            <div class="btn-container">
+                <button type="submit" class="btn btn-alta">Agregar Inmueble</button>
+                <a href="index_admin.html" class="btn btn-volver">Menu principal</a>
+            </div>
+        </form>
+    </div>
+    <script src="./assets/js/app.js"></script>
+
+    <script>
+        const URL = "http://127.0.0.1:5000/";
+
+        //Al subir al servidor, deberá utilizarse la siguiente ruta. USUARIO debe ser reemplazado por el nombre de usuario de Pythonanywhere
+        //const URL = "https://USUARIO.pythonanywhere.com/"
+
+        // Capturamos el evento de envío del formulario
+        document.getElementById('formulario').addEventListener('submit', function (event) {
+            event.preventDefault(); // Evitamos que se envíe el formulario
+
+            var formData = new FormData(this);
+
+            // Realizamos la solicitud POST al servidor
+            fetch(URL + 'inmuebles', {
+                method: 'POST',
+                body: formData // Aquí enviamos formData. Dado que formData puede contener archivos, no se utiliza JSON.
+            })
+
+                // Después de realizar la solicitud POST, se utiliza el método then() para manejar la respuesta del servidor.
+                .then(function (response) {
+                    if (response.ok) {
+                        // Si la respuesta es exitosa, convierte los datos de la respuesta a formato JSON.
+                        return response.json();
+                    } else {
+                        // Si hubo un error, lanzar explícitamente una excepción
+                        // para ser "catcheada" más adelante
+                        throw new Error('Error al agregar el inmueble.');
+                    }
+                })
+
+                // Respuesta OK, muestra una alerta informando que el inmueble se agregó correctamente y limpia los campos del formulario para que puedan ser utilizados para un nuevo inmueble.
+                .then(function (data) {
+                    alert('Inmueble agregado correctamente.');
+                })
+
+                // En caso de error, mostramos una alerta con un mensaje de error.
+                .catch(function (error) {
+                    alert('Error al agregar el inmueble.');
+                })
+
+                // Limpiar el formulario en ambos casos (éxito o error)
+                .finally(function () {
+                    document.getElementById('direccion').value = "";
+                    document.getElementById('localidad').value = "";
+                    document.getElementById('provincia').value = "";
+                    document.getElementById('codigo_precio').value = "";
+                    document.getElementById('codigo_operacion').value = "";
+                    document.getElementById('codigo_tipo_inmueble').value = "";
+                    document.getElementById('codigo_estado_inmueble').value = "";
+                    document.getElementById('descripcion').value = "";
+                });
+        });
+    </script>
+</body>
+
+</html>
