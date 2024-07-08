@@ -110,7 +110,6 @@
             <h5 class="card-title">Casa {{ inmueble.id_inmueble }}</h5>
             <p class="card-text">{{ inmueble. descripcion }}
               content.</p>
-            <a href="{{ url_for('detalle_propiedad', id_inmueble = inmueble.id_inmueble ) }}" class="btn btn-primary">Ver más</a>
           </div>
         </div>
         {% endfor %}
