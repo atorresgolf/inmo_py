@@ -6,14 +6,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Eliminar Productos 🚀</title>
-    <link rel="stylesheet" href="./assets/css/estilos_admin.css">
+    <link rel="stylesheet" href="./static/assets/css/estilos_admin.css">
     
 </head>
 
 <body>
     <header>
         <nav class="navbar-index">
-            <img class="logo-nav" src="./assets/img/casa.jpg" alt="logo">
+            <img class="logo-nav" src="./static/assets/img/casa.jpg" alt="logo">
             <a href="index_admin.html">Home</a>
             <a href="altas.html">Alta de inmuebles</a>
             <a href="listado.html">Listado de inmuebles</a>
@@ -23,7 +23,7 @@
     </header>
 
     <div class="logo-centrado">
-        <img src="./assets/img/casa.jpg" alt="logo">
+        <img src="./static/assets/img/casa.jpg" alt="logo">
     </div>
     <h1>Eliminar Inmuebles</h1><br>
 
@@ -31,14 +31,14 @@
         <thead> 
             <tr>
                 <th>ID</th>
-                <th>Dirección</th>
-                <th>Localidad</th>
-                <th>Provincia</th>
-                <th>Precio</th>
-                <th>Operación</th>
-                <th>Tipo</th>
-                <th>Estado</th>
-                <th>Descripción</th>
+                    <th>Dirección</th>
+                    <th>Localidad</th>
+                    <th>Provincia</th>
+                    <th>Moneda</th>
+                    <th>Precio</th>
+                    <th>Tipo Inmueble</th>
+                    <th>Estado</th>
+                    <th>Descripción</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -49,7 +49,7 @@
     <div class="contenedor-centrado">
         <a href="index_admin.html" class="btn btn-consultar">Menu principal</a>
     </div>
-    <script src="./assets/js/app.js"></script>
+    <!-- <script src="./assets/js/app.js"></script> -->
 
     <script>
         const URL = "http://127.0.0.1:5000/"
@@ -75,10 +75,10 @@
                             <td>${inmueble.direccion}</td>
                             <td>${inmueble.localidad}</td>
                             <td>${inmueble.provincia}</td>
-                            <td>${inmueble.codigo_precio}</td>
-                            <td>${inmueble.codigo_operacion}</td>
-                            <td>${inmueble.codigo_tipo_inmueble}</td>
-                            <td>${inmueble.codigo_estado_inmueble}</td>
+                            <td>${inmueble.moneda}</td>
+                            <td>${inmueble.precio}</td>
+                            <td>${inmueble.tipo_inmueble}</td>
+                            <td>${inmueble.estado}</td>
                             <td>${inmueble.descripcion}</td>
                             <td><button onclick="eliminarInmueble('${inmueble.id_inmueble}')">Eliminar</button></td>
                         `;
