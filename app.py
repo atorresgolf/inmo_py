@@ -13,12 +13,12 @@ from werkzeug.utils import secure_filename
 import os
 import time
 
-from inmobiliaria import Inmobiliaria
+from inmobiliaria_admin import InmobiliariaAdmin
 
 app = Flask(__name__)
 CORS(app)
 
-inmobiliaria = Inmobiliaria(host='localhost', user='root', password='', port=3307, database='inmobiliaria')
+inmobiliaria = InmobiliariaAdmin(host='localhost', user='root', password='',  database='inmobiliaria_admin')
 
 
 @app.route("/", methods=["GET"])
@@ -26,11 +26,20 @@ def index():
     inmuebles = inmobiliaria.listar_inmuebles()
     # return jsonify(inmuebles)
     return render_template('index.html', inmuebles=inmuebles)
+
+@app.route('/propiedades')
+def propiedades():
+    return render_template('propiedades.html')
+
+@app.route('/contacto')
+def contacto():
+    return render_template('contacto.html')
+
+
 @app.route("/inmuebles", methods=["GET"])
-def adminPrincipal():
+def index_admin():
     inmuebles = inmobiliaria.listar_inmuebles()
     return jsonify(inmuebles)
-
 
 
 
